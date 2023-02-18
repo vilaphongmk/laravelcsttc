@@ -12,17 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_news', function (Blueprint $table) {
-            $table->id('news_id');
+            $table->id();
             $table->string('title');
             $table->string('content');
             $table->string('image_path');
-            $table->increments('views');
-            $table->string(
-                'created_by'
-            );
-            $table->string(
-                'update_by'
-            );
+            $table->string('views');
+            $table->string('created_by');
             $table->timestamps();
         });
     }

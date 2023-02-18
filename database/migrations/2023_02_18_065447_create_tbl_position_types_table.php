@@ -12,18 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_position_types', function (Blueprint $table) {
-            $table->id('position_type_id');
+            $table->id();
             $table->string('position_type_name');
-
-            $table->string(
-                'created_by'
-            );
-            $table->string(
-                'update_by'
-            );
-            $table->string(
-                'update_at'
-            );
+            $table->string('created_by');
+            $table->string('update_by');
             $table->timestamps();
         });
     }
