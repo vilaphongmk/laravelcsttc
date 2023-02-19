@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class tbl_user_foreigns extends Model
 {
     use HasFactory;
+    protected $fillable = [];
+    public function tbl_users()
+    {
+
+        return $this->belongsToMany(tbl_users::class);
+    }
 }

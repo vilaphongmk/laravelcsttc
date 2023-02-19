@@ -9,8 +9,8 @@ class tbl_news extends Model
 {
     use HasFactory;
 
-    public function tbl_contacts()
+    public function tbl_users()
     {
-        return $this->belongsTo(tbl_contacts::class);
+        return $this->belongsTo(tbl_users::class);
     }
 }
