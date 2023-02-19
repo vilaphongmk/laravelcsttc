@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class tbl_user_positions extends Model
 {
     use HasFactory;
-    protected $fillable = [];
+    protected $fillable = ['user_id', 'position_type_id', 'positions_index'];
     public function tbl_users()
     {
 

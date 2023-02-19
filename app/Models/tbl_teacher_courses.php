@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class tbl_teacher_courses extends Model
 {
     use HasFactory;
-    protected $fillable = [];
+    protected $fillable = ['user_id', 'courses_id'];
     public function tbl_users()
     {
 

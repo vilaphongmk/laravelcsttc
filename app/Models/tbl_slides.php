@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class tbl_slides extends Model
 {
     use HasFactory;
-    protected $fillable = [];
+    protected $fillable = ['image_path', 'slide_index', 'created_by'];
     public function tbl_users()
     {
 

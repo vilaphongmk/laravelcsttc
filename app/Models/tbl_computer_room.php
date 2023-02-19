@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class tbl_computer_room extends Model
 {
     use HasFactory;
-    protected $fillable = [];
+    protected $fillable = ['image_path'];
     public function tbl_users()
     {
 

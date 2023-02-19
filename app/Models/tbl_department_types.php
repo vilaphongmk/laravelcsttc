@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class tbl_department_types extends Model
 {
     use HasFactory;
-    protected $fillable = [];
+    protected $fillable = ['department_type_name'];
     public function tbl_users()
     {
 

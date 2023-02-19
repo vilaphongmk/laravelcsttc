@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class tbl_prefix extends Model
 {
     use HasFactory;
+    protected $fillable = ['prefix_name'];
 }

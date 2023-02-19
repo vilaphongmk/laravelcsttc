@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class tbl_documents extends Model
 {
     use HasFactory;
-    protected $fillable = [];
+    protected $fillable = ['title', 'pdf_path', 'downloads', 'created_by', 'update_by'];
     public function tbl_users()
     {
 
