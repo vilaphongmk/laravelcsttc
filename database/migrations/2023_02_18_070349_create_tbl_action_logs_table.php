@@ -15,8 +15,8 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('user_id');
             $table->string('log');
-
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('tbl_user_contacts');
         });
     }
 

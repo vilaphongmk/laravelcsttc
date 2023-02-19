@@ -29,12 +29,8 @@ return new class extends Migration
             $table->unsignedBigInteger('contact_id');
             $table->unsignedBigInteger('user_education_id');
             $table->unsignedBigInteger('role_type_id');
-            $table->string('score_id');
-
-
-            $table->string(
-                'update_at'
-            );
+            $table->unsignedBigInteger('score_id');
+            $table->unsignedBigInteger('update_by')->nullable();
             $table->timestamps();
             $table->foreign('prefix_id')->references('id')->on('tbl_prefixes');
             $table->foreign('course_id')->references('id')->on('tbl_courses');
@@ -45,6 +41,7 @@ return new class extends Migration
             $table->foreign('contact_id')->references('id')->on('tbl_contacts');
             $table->foreign('user_education_id')->references('id')->on('tbl_user_educations');
             $table->foreign('role_type_id')->references('id')->on('tbl_role_types');
+            $table->foreign('update_by')->references('id')->on('tbl_students');
         });
     }
 

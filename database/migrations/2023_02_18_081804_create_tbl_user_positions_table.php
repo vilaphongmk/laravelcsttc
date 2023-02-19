@@ -15,8 +15,11 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('position_type_id');
             $table->string('user_id');
-            $table->string('user_positions_index');
+            $table->integer('user_positions_index', 5);
             $table->timestamps();
+            $table->foreign('position_type_id')->references('id')->on('tbl_position_type');
+            $table->foreign('user_id')->references('id')->on('tbl_user_contacts');
+            $table->foreign('department_id')->references('id')->on('tbl_departments');
         });
     }
 

@@ -12,21 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_visions', function (Blueprint $table) {
-            $table->id('vision_id');
+            $table->bigIncrements('id');
             $table->string('title');
             $table->string('image_path');
-            $table->string('content');
-            $table->string('vision_index');
-            $table->string(
-                'created_by'
-            );
-            $table->string(
-                'update_by'
-            );
-            $table->string(
-                'update_at'
-            );
+            $table->longText('content');
+            $table->integer('vision_index')->default(1);
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('update_by')->nullable();
             $table->timestamps();
+            $table->foreign('created_by')->references('id')->on('tbl_teachers');
+            $table->foreign('update_by')->references('id')->on('tbl_teachers');
         });
     }
 

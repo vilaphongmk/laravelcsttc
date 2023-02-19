@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('tbl_teacher_courses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('courses_id', 15);
+            $table->unsignedBigInteger('courses_id', 15);
             $table->timestamps();
+            $table->foreign('courses_id')->references('id')->on('tbl_courses');
         });
     }
 

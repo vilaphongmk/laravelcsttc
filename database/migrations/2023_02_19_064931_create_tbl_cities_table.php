@@ -12,11 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_cities', function (Blueprint $table) {
-            $table->id();
-            $table->string('city_name_la');
-            $table->string('city_name_en');
-            $table->string('updated_by');
+            $table->bigIncrements('id');
+            $table->string('city_name_la', 50);
+            $table->string('city_name_en', 50)->nullable();
+            $table->unsignedBigInteger('update_by')->nullable();
             $table->timestamps();
+            $table->foreign('update_by')->references('id')->on('tbl_teachers');
         });
     }
 
