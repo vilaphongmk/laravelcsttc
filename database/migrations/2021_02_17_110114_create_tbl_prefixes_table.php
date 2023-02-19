@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_prefixes', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('prefix_name');
             $table->timestamps();
         });

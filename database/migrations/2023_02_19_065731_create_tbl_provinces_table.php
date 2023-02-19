@@ -11,18 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_faculties', function (Blueprint $table) {
+        Schema::create('tbl_provinces', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('faculty_name');
-            $table->string(
-                'created_by'
-            );
-            $table->string(
-                'update_by'
-            );
-            $table->string(
-                'update_at'
-            );
+            $table->string('province_name_la');
+            $table->string('province_name_en');
+            $table->string('updated_at');
+            $table->string('updated_by');
             $table->timestamps();
         });
     }
@@ -32,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_faculties');
+        Schema::dropIfExists('tbl_provinces');
     }
 };
