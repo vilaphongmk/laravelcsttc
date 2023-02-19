@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Apis;
 
 use App\Http\Controllers\Controller;
-use App\Models\tbl_contacts;
+use App\Models\tbl_user_contacts;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +25,7 @@ class AuthController extends Controller
                 $request->all(),
                 [
                     'name' => 'required',
-                    'email' => 'required|email|unique:users,email',
+                    'contact' => 'required|email|unique:users,email',
                     'password' => 'required'
                 ]
             );
@@ -38,9 +38,9 @@ class AuthController extends Controller
                 ], 401);
             }
 
-            $user = User::create([
+            $user = tbl_user_contacts::create([
                 'name' => $request->name,
-                'email' => $request->email,
+                'contact' => $request->contact,
                 'password' => bcrypt($request->password)
             ]);
 
@@ -69,7 +69,7 @@ class AuthController extends Controller
             $validateUser = Validator::make(
                 $request->all(),
                 [
-                    'email' => 'required|email',
+                    'contact' => 'required|email',
                     'password' => 'required'
                 ]
             );
@@ -82,14 +82,14 @@ class AuthController extends Controller
                 ], 401);
             }
 
-            if (!Auth::attempt($request->only(['email', 'password']))) {
+            if (!Auth::attempt($request->only(['contact', 'password']))) {
                 return response()->json([
                     'status' => false,
                     'message' => 'Email & Password does not match with our record.',
                 ], 401);
             }
 
-            $user = tbl_contacts::where('email', $request->email)->first();
+            $user = tbl_user_contacts::where('contact', $request->contact)->first();
 
             return response()->json([
                 'status' => true,

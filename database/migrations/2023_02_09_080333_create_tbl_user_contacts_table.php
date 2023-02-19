@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('tbl_user_contacts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('contact')->unique();
-            $table->unsignedBigInteger('tbl_contact_types_id');
+            $table->unsignedBigInteger('contact_type_id');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('tbl_contact_types_id')->references('id')->on('tbl_user_contacts');
+            $table->foreign('contact_type_id')->references('id')->on('tbl_contact_types');
         });
     }
 

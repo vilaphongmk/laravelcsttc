@@ -21,9 +21,9 @@ class tbl_contacts extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
+        'contact',
         'password',
+        'contact_types_id',
     ];
 
     /**
@@ -44,4 +44,9 @@ class tbl_contacts extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function tbl_news()
+    {
+        return $this->hasMany(tbl_news::class);
+    }
 }
