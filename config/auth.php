@@ -72,7 +72,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\tbl_contacts::class,
+            'model' => App\Models\tbl_user_contacts::class,
         ],
 
         // 'users' => [
