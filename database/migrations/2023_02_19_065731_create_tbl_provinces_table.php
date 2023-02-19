@@ -15,7 +15,6 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('province_name_la');
             $table->string('province_name_en');
-            $table->string('updated_at');
             $table->string('updated_by');
             $table->timestamps();
         });
