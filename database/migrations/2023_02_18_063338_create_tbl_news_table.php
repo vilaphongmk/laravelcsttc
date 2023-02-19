@@ -17,10 +17,12 @@ return new class extends Migration
             $table->longText('content');
             $table->string('image_path');
             $table->integer('views')->default(100);
-            // $table->unsignedBigInteger('tbl_user_contacts_id');
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('updated_by');
             $table->timestamps();
 
-            // $table->foreign('tbl_user_contacts_id')->references('id')->on('tbl_user_contacts');
+            $table->foreign('created_by')->references('id')->on('tbl_user_contacts');
+            $table->foreign('updated_by')->references('id')->on('tbl_user_contacts');
         });
     }
 
