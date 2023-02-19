@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class tbl_provinces extends Model
 {
     use HasFactory;
+    protected $fillable = [];
 }

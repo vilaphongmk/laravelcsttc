@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class tbl_faculties extends Model
 {
     use HasFactory;
+    protected $fillable = [];
+    public function tbl_users()
+    {
+
+        return $this->belongsTo(tbl_users::class);
+    }
 }
