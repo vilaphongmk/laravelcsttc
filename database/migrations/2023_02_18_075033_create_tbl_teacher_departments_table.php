@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_teacher_departments', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('department_id', 15);
             $table->timestamps();
         });

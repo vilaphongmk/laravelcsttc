@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_teacher_courses', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('courses_id', 15);
+        Schema::create('tbl_cities', function (Blueprint $table) {
+            $table->id();
+            $table->string('city_name_la');
+            $table->string('city_name_en');
+            $table->string('updated_by');
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_teacher_courses');
+        Schema::dropIfExists('tbl_cities');
     }
 };

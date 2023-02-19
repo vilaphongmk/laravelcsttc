@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_verifies', function (Blueprint $table) {
-            $table->id('verify_id');
+            $table->bigIncrements('id');
             $table->string('code');
             $table->string('contact_number');
             $table->timestamps();
