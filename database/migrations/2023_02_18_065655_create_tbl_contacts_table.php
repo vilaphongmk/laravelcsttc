@@ -12,20 +12,27 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_contacts', function (Blueprint $table) {
-            $table->id('contact_id');
-            $table->string('contact_number');
-            $table->string('contact_type');
-            $table->string('contact_index');
+            // $table->id('contact_id');
+            // $table->string('contact_number');
+            // $table->string('contact_type');
+            // $table->string('contact_index');
 
-            $table->string(
-                'created_by'
-            );
-            $table->string(
-                'update_by'
-            );
-            $table->string(
-                'update_at'
-            );
+            // $table->string(
+            //     'created_by'
+            // );
+            // $table->string(
+            //     'update_by'
+            // );
+            // $table->string(
+            //     'update_at'
+            // );
+            // $table->timestamps();
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
