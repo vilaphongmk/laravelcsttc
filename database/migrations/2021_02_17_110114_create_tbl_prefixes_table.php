@@ -12,9 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_prefixes', function (Blueprint $table) {
-            $table->string('prefix_id');
-            $table->string('user_id');
-            $table->string('user_positions_index');
+            $table->id();
+            $table->string('prefix_name');
             $table->timestamps();
         });
     }
