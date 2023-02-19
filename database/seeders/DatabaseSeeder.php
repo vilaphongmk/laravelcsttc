@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
         // ]);
 
 
-        tbl_contacts::create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'password' => bcrypt('password'),
-        ]);
+        // tbl_contacts::create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        //     'password' => bcrypt('password'),
+        // ]);
     }
 }
