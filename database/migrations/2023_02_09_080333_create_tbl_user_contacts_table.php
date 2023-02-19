@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('tbl_user_contacts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('contact')->unique();
-            $table->unsignedBigInteger('contact_type_id');
+            $table->string('contact', 50)->unique();
+            $table->unsignedBigInteger('contact_type_id', 10);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tbl_slides', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('image_path');
-            $table->string('slide_index');
+            $table->integer('slide_index', 5);
             $table->unsignedBigInteger('created_by');
             $table->timestamps();
             $table->foreign('created_by')->references('id')->on('tbl_teachers');

@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('tbl_provinces', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('province_name_la');
-            $table->string('province_name_en');
-            $table->string('updated_by');
+            $table->string('province_name_la', 50);
+            $table->string('province_name_en', 50)->nullable();
+            $table->unsignedBigInteger('update_by')->nullable();
             $table->timestamps();
+            $table->foreign('update_by')->references('id')->on('tbl_teachers');
         });
     }
 

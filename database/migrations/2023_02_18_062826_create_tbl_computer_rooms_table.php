@@ -12,13 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_computer_rooms', function (Blueprint $table) {
-            $table->id('computer_id');
-            $table->string('image_path');
-            $table->string(
-                'created_by'
-            );
-
+            $table->id();
+            $table->string('image_path', 200);
+            $table->unsignedBigInteger('created_by');
             $table->timestamps();
+            $table->foreign('created_by')->references('id')->on('tbl_teachers');
         });
     }
 

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tbl_contact_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('contact_type_name');
+            $table->string('contact_type_name', 50);
             $table->timestamps();
         });
     }

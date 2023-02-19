@@ -13,17 +13,12 @@ return new class extends Migration
     {
         Schema::create('tbl_faculties', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('faculty_name');
-            $table->string(
-                'created_by'
-            );
-            $table->string(
-                'update_by'
-            );
-            $table->string(
-                'update_at'
-            );
+            $table->string('faculty_name', 30);
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('update_by')->nullable();
             $table->timestamps();
+            $table->foreign('created_by')->references('id')->on('tbl_teachers');
+            $table->foreign('update_by')->references('id')->on('tbl_teachers');
         });
     }
 

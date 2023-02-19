@@ -19,7 +19,6 @@ return new class extends Migration
             $table->timestamps();
             $table->foreign('position_type_id')->references('id')->on('tbl_position_type');
             $table->foreign('user_id')->references('id')->on('tbl_user_contacts');
-            $table->foreign('department_id')->references('id')->on('tbl_departments');
         });
     }
 

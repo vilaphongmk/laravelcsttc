@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tbl_prefixes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('prefix_name');
+            $table->string('prefix_name', 10);
             $table->timestamps();
         });
     }

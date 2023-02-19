@@ -12,18 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_histories', function (Blueprint $table) {
-            $table->id('history_id');
-            $table->string('content');
-            $table->string(
-                'created_by'
-            );
-            $table->string(
-                'update_by'
-            );
-            $table->string(
-                'update_at'
-            );
+            $table->bigIncrements('id');
+            $table->longText('content');
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('update_by')->nullable();
             $table->timestamps();
+            $table->foreign('created_by')->references('id')->on('tbl_teachers');
+            $table->foreign('update_by')->references('id')->on('tbl_teachers');
         });
     }
 

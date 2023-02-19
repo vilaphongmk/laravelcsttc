@@ -26,7 +26,7 @@ return new class extends Migration
             $table->unsignedBigInteger('teacher_courses_id');
             $table->unsignedBigInteger('role_type_id');
             $table->unsignedBigInteger('action_log_id');
-            $table->string('update_by')->nullable();
+            $table->unsignedBigInteger('update_by')->nullable();
             $table->timestamps();
             $table->foreign('prefix_id')->references('id')->on('tbl_prefixes');
             $table->foreign('user_position_id')->references('id')->on('tbl_user_positions');

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_role_types', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('role_type_name', 15);
             $table->timestamps();
         });
