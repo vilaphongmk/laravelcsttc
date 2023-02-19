@@ -12,10 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_user_contacts', function (Blueprint $table) {
-            $table->id('user_contact_id');
-            $table->string('contact_number');
-            $table->string('contact_type');
+            $table->bigIncrements('id');
+            $table->string('contact')->unique();
+            $table->unsignedBigInteger('tbl_contact_types_id');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password')->nullable();
+            $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('tbl_contact_types_id')->references('id')->on('tbl_user_contacts');
         });
     }
 

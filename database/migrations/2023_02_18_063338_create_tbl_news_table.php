@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('tbl_news', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('content');
+            $table->longText('content');
             $table->string('image_path');
-            $table->string('views');
-            $table->string('created_by');
+            $table->integer('views')->default(100);
+            // $table->unsignedBigInteger('tbl_user_contacts_id');
             $table->timestamps();
+
+            // $table->foreign('tbl_user_contacts_id')->references('id')->on('tbl_user_contacts');
         });
     }
 
