@@ -12,17 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_news', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('title');
             $table->longText('content');
             $table->string('image_path');
             $table->integer('views')->default(100);
             $table->unsignedBigInteger('created_by');
-            $table->unsignedBigInteger('updated_by');
+            $table->unsignedBigInteger('update_by')->nullable();
             $table->timestamps();
-
-            $table->foreign('created_by')->references('id')->on('tbl_user_contacts');
-            $table->foreign('updated_by')->references('id')->on('tbl_user_contacts');
+            $table->foreign('created_by')->references('id')->on('tbl_users');
+            $table->foreign('update_by')->references('id')->on('tbl_users');
         });
     }
 

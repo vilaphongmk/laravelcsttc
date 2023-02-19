@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_action_logs', function (Blueprint $table) {
+        Schema::create('tbl_faculties', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('user_id');
-            $table->string('log');
-
+            $table->string('faculty_name', 50);
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('update_by')->nullable();
             $table->timestamps();
+            $table->foreign('created_by')->references('id')->on('tbl_users');
+            $table->foreign('update_by')->references('id')->on('tbl_users');
         });
     }
 
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_action_logs');
+        Schema::dropIfExists('tbl_faculties');
     }
 };

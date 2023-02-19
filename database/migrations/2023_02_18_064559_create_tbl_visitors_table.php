@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_visitors', function (Blueprint $table) {
-            $table->id('visitor_id');
-            $table->string('ip_address');
-            $table->string('visit_date');
+            $table->id();
+            $table->string('ip_address', 20);
+            $table->datetime('visit_date');
             $table->timestamps();
         });
     }

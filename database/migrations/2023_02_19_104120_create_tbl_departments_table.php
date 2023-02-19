@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_teacher_departments', function (Blueprint $table) {
+        Schema::create('tbl_departments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('department_id', 15);
+            $table->unsignedBigInteger('department_type_id');
             $table->timestamps();
+            $table->foreign('department_type_id')->references('id')->on('tbl_department_types');
         });
     }
 
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_teacher_departments');
+        Schema::dropIfExists('tbl_departments');
     }
 };

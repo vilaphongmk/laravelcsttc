@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_position_types', function (Blueprint $table) {
-            $table->id();
-            $table->string('position_type_name');
-            $table->string('created_by');
-            $table->string('update_by');
+        Schema::create('tbl_computer_rooms', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('image_path');
+            $table->unsignedBigInteger('created_by');
             $table->timestamps();
+            $table->foreign('created_by')->references('id')->on('tbl_users');
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_position_types');
+        Schema::dropIfExists('tbl_computer_rooms');
     }
 };

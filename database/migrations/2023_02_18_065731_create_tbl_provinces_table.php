@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_slides', function (Blueprint $table) {
-            $table->id('slide_id');
-            $table->string('image_path');
-            $table->string('slide_index');
-            $table->string(
-                'created_by'
-            );
+        Schema::create('tbl_provinces', function (Blueprint $table) {
+            $table->id();
+            $table->string('province_name_la', 50);
+            $table->string('province_name_en', 50)->nullable();
+
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_slides');
+        Schema::dropIfExists('tbl_provinces');
     }
 };

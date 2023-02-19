@@ -12,19 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_rules', function (Blueprint $table) {
-            $table->id('rule_id');
+            $table->bigIncrements('id');
             $table->string('title');
-            $table->string('content');
-            $table->string(
-                'created_by'
-            );
-            $table->string(
-                'update_by'
-            );
-            $table->string(
-                'update_at'
-            );
+            $table->longText('content');
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('update_by')->nullable();
             $table->timestamps();
+            $table->foreign('created_by')->references('id')->on('tbl_users');
+            $table->foreign('update_by')->references('id')->on('tbl_users');
         });
     }
 

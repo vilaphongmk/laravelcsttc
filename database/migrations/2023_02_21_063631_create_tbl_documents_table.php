@@ -12,20 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_documents', function (Blueprint $table) {
-            $table->id('document_id');
+            $table->bigIncrements('id');
             $table->string('title');
-            $table->string('pdf_path');
-            $table->string('downloads');
-            $table->string(
-                'created_by'
-            );
-            $table->string(
-                'update_by'
-            );
-            $table->string(
-                'update_at'
-            );
+            $table->string('pdf_path')->nullable();
+            $table->integer('downloads')->default(1);
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('update_by')->nullable();
             $table->timestamps();
+            $table->foreign('created_by')->references('id')->on('tbl_users');
+            $table->foreign('update_by')->references('id')->on('tbl_users');
         });
     }
 

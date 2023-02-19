@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_user_educations', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('education_name');
-            $table->string('education_index');
+            $table->integer('education_index')->default(1);
             $table->timestamps();
         });
     }
