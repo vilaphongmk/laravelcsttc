@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_cities', function (Blueprint $table) {
+        Schema::create('tbl_position_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('city_name_la', 50);
-            $table->string('city_name_en', 50)->nullable();
+            $table->string('position_type_name', 50);
+            $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('update_by')->nullable();
             $table->timestamps();
-            $table->foreign('update_by')->references('id')->on('tbl_teachers');
+            $table->foreign('created_by')->references('id')->on('tbl_users');
+            $table->foreign('update_by')->references('id')->on('tbl_users');
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_cities');
+        Schema::dropIfExists('tbl_position_types');
     }
 };

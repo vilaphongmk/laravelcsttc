@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_computer_rooms', function (Blueprint $table) {
+        Schema::create('tbl_department_types', function (Blueprint $table) {
             $table->id();
-            $table->string('image_path', 200);
-            $table->unsignedBigInteger('created_by');
+            $table->string('department_type_name');
             $table->timestamps();
-            $table->foreign('created_by')->references('id')->on('tbl_teachers');
         });
     }
 
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_computer_rooms');
+        Schema::dropIfExists('tbl_department_types');
     }
 };

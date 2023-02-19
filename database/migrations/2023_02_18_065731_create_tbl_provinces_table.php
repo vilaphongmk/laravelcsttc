@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_contact_types', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('contact_type_name', 50);
+        Schema::create('tbl_provinces', function (Blueprint $table) {
+            $table->id();
+            $table->string('province_name_la', 50);
+            $table->string('province_name_en', 50)->nullable();
+
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_contact_types');
+        Schema::dropIfExists('tbl_provinces');
     }
 };

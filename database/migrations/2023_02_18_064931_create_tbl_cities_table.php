@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_action_logs', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('user_id');
-            $table->string('log');
+        Schema::create('tbl_cities', function (Blueprint $table) {
+            $table->id();
+            $table->string('city_name_la', 50);
+            $table->string('city_name_en', 50)->nullable();
+
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('tbl_user_contacts');
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_action_logs');
+        Schema::dropIfExists('tbl_cities');
     }
 };

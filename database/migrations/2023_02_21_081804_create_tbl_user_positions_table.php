@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('tbl_user_positions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('position_type_id');
-            $table->string('user_id');
-            $table->integer('user_positions_index', 5);
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('position_type_id');
+            $table->integer('positions_index')->default(1);
             $table->timestamps();
-            $table->foreign('position_type_id')->references('id')->on('tbl_position_type');
-            $table->foreign('user_id')->references('id')->on('tbl_user_contacts');
+            $table->foreign('user_id')->references('id')->on('tbl_users');
+            $table->foreign('position_type_id')->references('id')->on('tbl_position_types');
         });
     }
 

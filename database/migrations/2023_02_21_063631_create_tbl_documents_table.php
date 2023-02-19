@@ -11,13 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_slides', function (Blueprint $table) {
+        Schema::create('tbl_documents', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('image_path');
-            $table->integer('slide_index', 5);
+            $table->string('title');
+            $table->string('pdf_path')->nullable();
+            $table->integer('downloads')->default(1);
             $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('update_by')->nullable();
             $table->timestamps();
-            $table->foreign('created_by')->references('id')->on('tbl_teachers');
+            $table->foreign('created_by')->references('id')->on('tbl_users');
+            $table->foreign('update_by')->references('id')->on('tbl_users');
         });
     }
 
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_slides');
+        Schema::dropIfExists('tbl_documents');
     }
 };

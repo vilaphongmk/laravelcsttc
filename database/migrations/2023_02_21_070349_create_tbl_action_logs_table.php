@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_teacher_departments', function (Blueprint $table) {
+        Schema::create('tbl_action_logs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('department_id', 15);
+            $table->unsignedBigInteger('user_id');
+            $table->string('log_detail');
             $table->timestamps();
-            $table->foreign('department_id')->references('id')->on('tbl_departments');
+            $table->foreign('user_id')->references('id')->on('tbl_users');
         });
     }
 
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_teacher_departments');
+        Schema::dropIfExists('tbl_action_logs');
     }
 };
