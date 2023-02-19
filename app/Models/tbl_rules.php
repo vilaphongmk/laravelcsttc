@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class tbl_rules extends Model
 {
     use HasFactory;
-    protected $fillable = [];
+    protected $fillable = ['title', 'content', 'created_by', 'update_by'];
     public function tbl_users()
     {
 

@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class tbl_provinces extends Model
 {
     use HasFactory;
-    protected $fillable = [];
+    protected $fillable = ['province_name_la', 'province_name_en'];
 }

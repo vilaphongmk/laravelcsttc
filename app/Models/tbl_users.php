@@ -47,8 +47,6 @@ class tbl_users extends Authenticatable
     {
         return $this->hasMany(tbl_news::class);
     }
-
-
     public function tbl_computer_room()
     {
         return $this->hasMany(tbl_computer_room::class);
@@ -101,8 +99,8 @@ class tbl_users extends Authenticatable
     {
         return $this->hasMany(tbl_educations::class);
     }
-    public function tbl_vision()
+    public function tbl_visions()
     {
-        return $this->hasMany(tbl_vision::class);
+        return $this->hasMany(tbl_visions::class);
     }
 }

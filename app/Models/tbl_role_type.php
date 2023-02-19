@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class tbl_role_type extends Model
 {
     use HasFactory;
-    protected $fillable = [];
+    protected $fillable = ['role_type_name'];
 }
