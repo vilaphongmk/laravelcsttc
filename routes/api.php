@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Apis\AuthController;
 use App\Http\Controllers\Apis\HistoryController;
+use App\Http\Controllers\Apis\PositionTypesController;
 use App\Http\Controllers\Apis\RulesController;
 use App\Http\Controllers\Apis\UserController;
 use Illuminate\Support\Facades\Route;
@@ -28,4 +29,9 @@ Route::group(['middleware' => "auth:sanctum"], function () {
     Route::post('/histories/create', [HistoryController::class, 'create']);
     Route::post('/histories/update', [HistoryController::class, 'update']);
     Route::delete('/histories/delete/{id}', [HistoryController::class, 'delete']);
+
+    Route::get('/position_types', [PositionTypesController::class, 'get']);
+    Route::post('/position_types/create', [PositionTypesController::class, 'create']);
+    Route::post('/position_types/update', [PositionTypesController::class, 'update']);
+    Route::delete('/position_types/delete/{id}', [PositionTypesController::class, 'delete']);
 });
