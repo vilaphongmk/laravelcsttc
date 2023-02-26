@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('title');
             $table->longText('content');
             $table->unsignedBigInteger('created_by');
-            $table->unsignedBigInteger('update_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
             $table->foreign('created_by')->references('id')->on('tbl_users');
-            $table->foreign('update_by')->references('id')->on('tbl_users');
+            $table->foreign('updated_by')->references('id')->on('tbl_users');
         });
     }
 
