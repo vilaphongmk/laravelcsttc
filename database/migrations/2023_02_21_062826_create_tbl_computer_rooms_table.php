@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_computer_rooms', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('image_path');
             $table->unsignedBigInteger('created_by');
             $table->timestamps();

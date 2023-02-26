@@ -15,12 +15,10 @@ return new class extends Migration
 
             $table->unsignedBigInteger('user_position_id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('role_type_id');
             $table->timestamps();
             $table->foreign('user_position_id')->references('id')->on('tbl_user_positions');
-            $table->foreign('role_type_id')->references('id')->on('tbl_role_types');
             $table->foreign('user_id')->references('id')->on('tbl_users');
-            $table->primary(['user_position_id', 'role_type_id', 'user_id']);
+            $table->primary(['user_position_id', 'user_id']);
         });
     }
 

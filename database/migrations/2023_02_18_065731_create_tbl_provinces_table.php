@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('province_name_la', 50);
             $table->string('province_name_en', 50)->nullable();
-
             $table->timestamps();
         });
     }
