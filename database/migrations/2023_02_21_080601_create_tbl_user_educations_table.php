@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_role_types', function (Blueprint $table) {
+        Schema::create('tbl_user_educations', function (Blueprint $table) {
             $table->id();
-            $table->string('role_type_name', 15);
+            $table->string('education_name');
+            $table->integer('education_index')->default(1);
+            $table->unsignedBigInteger('users_id');
             $table->timestamps();
+            $table->foreign('users_id')->references('id')->on('tbl_users')->onDelete('cascade');
         });
     }
 
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_role_types');
+        Schema::dropIfExists('tbl_user_educations');
     }
 };

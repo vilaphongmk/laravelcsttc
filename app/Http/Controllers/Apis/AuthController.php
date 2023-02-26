@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Apis;
 
 use App\Http\Controllers\Controller;
+use App\Models\tbl_roles;
 use App\Models\tbl_user_contacts;
+use App\Models\tbl_users;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,93 +15,51 @@ class AuthController extends Controller
 {
 
     /**
-     * Create User
-     * @param Request $request
-     * @return User
-     */
-    public function createUser(Request $request)
-    {
-        try {
-            //Validated
-            $validateUser = Validator::make(
-                $request->all(),
-                [
-                    'name' => 'required',
-                    'contact' => 'required|email|unique:users,email',
-                    'password' => 'required'
-                ]
-            );
-
-            if ($validateUser->fails()) {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'validation error',
-                    'errors' => $validateUser->errors()
-                ], 401);
-            }
-
-            $user = tbl_user_contacts::create([
-                'name' => $request->name,
-                'contact' => $request->contact,
-                'password' => bcrypt($request->password)
-            ]);
-
-            return response()->json([
-                'status' => true,
-                'message' => 'User Created Successfully',
-                'token' => $user->createToken("API TOKEN")->plainTextToken,
-                'user' =>  $user
-            ], 200);
-        } catch (\Throwable $th) {
-            return response()->json([
-                'status' => false,
-                'message' => $th->getMessage(),
-            ], 500);
-        }
-    }
-
-    /**
      * Login The User
      * @param Request $request
      * @return User
      */
     public function login(Request $request)
     {
+        $validate = Validator::make(
+            $request->all(),
+            [
+                'email' => 'required|email',
+                'password' => 'required'
+            ],
+            [
+                "email" => "Please enter a valid email 7777",
+            ]
+        );
+
+        if ($validate->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'errors' => $validate->errors()
+            ], 200);
+        }
+
+        if (!Auth::attempt($request->only(['email', 'password']))) {
+            return response()->json([
+                'status' => 'error',
+                'errors' => 'Email & Password does not match with our record.',
+            ], 200);
+        }
+
+
         try {
-            $validateUser = Validator::make(
-                $request->all(),
-                [
-                    'contact' => 'required|email',
-                    'password' => 'required'
-                ]
-            );
-
-            if ($validateUser->fails()) {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'validation error',
-                    'errors' => $validateUser->errors()
-                ], 401);
-            }
-
-            if (!Auth::attempt($request->only(['contact', 'password']))) {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Email & Password does not match with our record.',
-                ], 401);
-            }
-
-            $user = tbl_user_contacts::where('contact', $request->contact)->first();
+            $user = tbl_users::where('email', $request->email)->first();
+            $role = $user->tbl_roles;
 
             return response()->json([
-                'status' => true,
+                'status' => 'success',
                 'message' => 'User Logged In Successfully',
                 'token' => $user->createToken("API TOKEN")->plainTextToken,
-                'user' =>  $user
+                'user' =>  $user,
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
-                'status' => false,
+                'status' => 'error',
                 'message' => $th->getMessage()
             ], 500);
         }

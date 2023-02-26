@@ -11,7 +11,6 @@ class tbl_courses extends Model
     protected $fillable = ['subjects', 'units', 'terms', 'faculty_id', 'pdf_path'];
     public function tbl_users()
     {
-
         return $this->belongsTo(tbl_users::class);
     }
 }

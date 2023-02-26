@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class tbl_user_foreigns extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_position_id', 'user_id', 'role_type_id'];
+    protected $fillable = ['user_position_id', 'user_id'];
     public function tbl_users()
     {
 

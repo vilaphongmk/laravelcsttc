@@ -19,11 +19,11 @@ return new class extends Migration
             $table->unsignedBigInteger('faculty_id');
             $table->string('pdf_path')->nullable();
             $table->unsignedBigInteger('created_by');
-            $table->unsignedBigInteger('update_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
             $table->foreign('faculty_id')->references('id')->on('tbl_faculties');
             $table->foreign('created_by')->references('id')->on('tbl_users');
-            $table->foreign('update_by')->references('id')->on('tbl_users');
+            $table->foreign('updated_by')->references('id')->on('tbl_users');
         });
     }
 

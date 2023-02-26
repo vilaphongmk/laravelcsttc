@@ -19,10 +19,33 @@ class tbl_users extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'contact',
+        'prefix',
+        'user_type',
+        'login_status',
+        'image_path',
+        'first_name',
+        'last_name',
+        'date_of_birth',
+        'slogan',
+        'village_present',
+        'village_birth',
+        'city_present_id',
+        'province_present_id',
+        'city_birth_id',
+        'province_birth_id',
+        'email',
+        'whatsapp',
+        'telephone1',
+        'telephone2',
+        'facebook',
+        'line',
+        'youtube',
         'password',
-        'contact_types_id',
+        'role_id',
     ];
+
+
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -30,7 +53,6 @@ class tbl_users extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 
@@ -102,5 +124,15 @@ class tbl_users extends Authenticatable
     public function tbl_visions()
     {
         return $this->hasMany(tbl_visions::class);
+    }
+
+    public function tbl_students()
+    {
+        return $this->hasMany(tbl_students::class);
+    }
+
+    public function tbl_roles()
+    {
+        return $this->hasOne(tbl_roles::class, 'user_id', 'id');
     }
 }

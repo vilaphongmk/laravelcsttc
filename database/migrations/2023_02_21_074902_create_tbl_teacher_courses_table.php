@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_teacher_courses', function (Blueprint $table) {
-
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('courses_id');
             $table->timestamps();
