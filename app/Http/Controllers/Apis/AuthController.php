@@ -49,7 +49,7 @@ class AuthController extends Controller
 
         try {
             $user = tbl_users::where('email', $request->email)->first();
-            $role = $user->tbl_roles;
+            $user->tbl_roles;
 
             return response()->json([
                 'status' => 'success',
@@ -68,9 +68,11 @@ class AuthController extends Controller
 
     public function me(Request $request)
     {
+        $user = $request->user();
+        $user->tbl_roles;
         return response()->json([
             'status' => 'success',
-            'user' => $request->user()
+            'user' => $user,
         ], 200);
     }
 
