@@ -54,6 +54,7 @@ class AuthController extends Controller
             return response()->json([
                 'status' => 'success',
                 'message' => 'User Logged In Successfully',
+                'token_type' => 'Bearer',
                 'token' => $user->createToken("API TOKEN")->plainTextToken,
                 'user' =>  $user,
             ], 200);
@@ -68,7 +69,7 @@ class AuthController extends Controller
     public function me(Request $request)
     {
         return response()->json([
-            'status' => true,
+            'status' => 'success',
             'user' => $request->user()
         ], 200);
     }
